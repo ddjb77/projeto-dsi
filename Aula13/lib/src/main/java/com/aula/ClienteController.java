@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.aula.model.Produto;
-import com.aula.model.ProdutoService;
+import com.aula.model.Cliente;
+import com.aula.model.ClienteService;
 
 @Controller
 public class ClienteController {
@@ -28,35 +28,35 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/cliente")
-	public String acao(@ModelAttribute Produto prod,Model model) {
-		model.addAttribute("prod",prod);
-		ProdutoService pdao = context.getBean(ProdutoService.class);
-		pdao.insert(prod);
-		return "produtosucesso";
+	public String acao(@ModelAttribute Cliente cliente,Model model) {
+		model.addAttribute("cliente",cliente);
+		ClienteService cli = context.getBean(ClienteService.class);
+		cli.insert(cliente);
+		return "clientesucesso";
 	}
 	
 	@GetMapping("descr/{id}")
     public String read(@PathVariable("id") int id, Model model){
-		ProdutoService pdao = context.getBean(ProdutoService.class);
-		Map<String,Object> produto = pdao.getProduto(id);
-		Produto prod = new Produto((String)produto.get("nome"),(double)produto.get("preco"));
-		model.addAttribute("prod",prod);
-		return "produtosucesso";
+		ClienteService cli = context.getBean(ClienteService.class);
+		Map<String,Object> cliente = cli.getCliente(id);
+		Cliente cli = new Cliente((String)cliente.get("nome"),cliente.get("tel"), cliente.get("email"), cliente.get("endereco"));
+		model.addAttribute("cliente",cliente);
+		return "clientessucesso";
     }
 	
-	@GetMapping("/produtos")
+	@GetMapping("/cliente")
 	public String listar(Model model) {
-		ProdutoService pdao = context.getBean(ProdutoService.class);
-		List<Map<String,Object>> produtos = pdao.getProdutos();
-		model.addAttribute("produtos",produtos);
-		return "formlista";
+		ClienteService cli = context.getBean(ClienteService.class);
+		List<Map<String,Object>> clientes = cli.getClientes();
+		model.addAttribute("clientes",clientes);
+		return "formlistacli";
 	}
 	
 	@PostMapping("/apagar/{id}")
 	public String deletar(@PathVariable("id") int id,Model model) {
-		ProdutoService pdao = context.getBean(ProdutoService.class);
-		pdao.deleteProduto(id);
-		return "redirect:/produtos";
+		ClienteService cli = context.getBean(ClienteService.class);
+		cli.deleteCliente(id);
+		return "redirect:/clientes";
 	}
 	
 
