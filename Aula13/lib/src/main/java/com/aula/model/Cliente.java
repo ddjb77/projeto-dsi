@@ -18,7 +18,8 @@ public class Cliente {
 			this.nome = nome;
 			this.endereco = endereco;
 			this.tel = tel;
-			this.email = email;}
+			this.email = email;
+			}
 	
 
 	public int getId() {
@@ -56,5 +57,7 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
 	
 }

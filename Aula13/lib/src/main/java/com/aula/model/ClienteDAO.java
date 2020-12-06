@@ -30,26 +30,26 @@ public class ClienteDAO{
         });
     }
     
-    public Map<String, Object> getcliente(int id) {
+    public Map<String, Object> getCliente(int id) {
     	String sql = "SELECT * FROM cliente WHERE cliente.id = ?";
     	return jdbc.queryForMap(sql,new Object[] {id});
     }
     
-    public List<Map<String, Object>> getclientes() {
+    public List<Map<String, Object>> getClientes() {
     	String sql = "SELECT * FROM cliente";
     	List<Map<String, Object>> clientes = (List<Map<String, Object>>) jdbc.queryForList(sql);
     	return clientes;
     }
     
-    public void deletecliente(int id) {
+    public void deleteCliente(int id) {
         String sql = "DELETE FROM cliente WHERE id = ?" ;
         jdbc.update(sql, new Object[] {id});
     }
     
-    public void updatecliente(int id,cliente cliente) {
+    public void updateCliente(int id, Cliente cliente) {
     	String sql = "UPDATE cliente SET nome = ?, tel = ?, endereco = ? email = ? WHERE id = ?";
     	 jdbc.update(sql, new Object[]{
-         		cliente.getNome(), cliente.getTel(), cliente.getEndereco(), cliente.getEmail()id
+         		cliente.getNome(), cliente.getTel(), cliente.getEndereco(), cliente.getEmail(),id
          });
     }
 }

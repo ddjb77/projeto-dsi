@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.aula.model.Cliente;
 import com.aula.model.ClienteService;
 
+
 @Controller
 public class ClienteController {
 	
@@ -39,10 +40,13 @@ public class ClienteController {
     public String read(@PathVariable("id") int id, Model model){
 		ClienteService cli = context.getBean(ClienteService.class);
 		Map<String,Object> cliente = cli.getCliente(id);
-		Cliente cli = new Cliente((String)cliente.get("nome"),cliente.get("tel"), cliente.get("email"), cliente.get("endereco"));
-		model.addAttribute("cliente",cliente);
-		return "clientessucesso";
+		Cliente c = new Cliente((int)cliente.get("id"),(String)cliente.get("nome"),(String)cliente.get("endereco"), (String)cliente.get("tel"), (String)cliente.get("email"));
+		model.addAttribute("cliente",c);
+		return "clientesucesso";
     }
+	
+	
+
 	
 	@GetMapping("/cliente")
 	public String listar(Model model) {

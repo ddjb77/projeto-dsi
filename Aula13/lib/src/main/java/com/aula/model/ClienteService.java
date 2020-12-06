@@ -11,8 +11,8 @@ public class ClienteService {
 	  @Autowired 
 	  ClienteDAO cli;
 	  
-	  public void insert(Cliente cli) {
-	    cli.insert(cli);
+	  public void insert(Cliente cliente) {
+	    cli.insert(cliente);
 	  }
 	  
 	  public Map<String, Object> getCliente(int id) {
