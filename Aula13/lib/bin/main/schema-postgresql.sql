@@ -9,13 +9,13 @@ CREATE TABLE IF NOT EXISTS cliente (
      nome varchar(50),
      tel varchar(50),
      email varchar(50),
-     endereco varchar(50)   
-;
+     endereco varchar(50)  
+     );
 
 CREATE TABLE IF NOT EXISTS conc (
      id serial PRIMARY KEY,
      nome varchar(50),
      tel varchar(50),
      email varchar(50),
-     endereco varchar(50)   
-;
+     endereco varchar(50) 
+     );
