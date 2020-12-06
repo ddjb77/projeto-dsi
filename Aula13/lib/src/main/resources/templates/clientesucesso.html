@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+   <h1>CLIENTE CADASTRADO</h1>
+   <div th:text="'nome : ' + ${c.nome} "></div>
+   <div th:text="'tel : ' + ${c.tel} "></div>
+   <div th:text="'endereco : ' + ${c.endereco} "></div>
+   <div th:text="'email : ' + ${c.email} "></div>
+   <a href="/cliente">Voltar</a>
+</body>
+</html>
