@@ -6,18 +6,20 @@ public class Cliente {
 	private String nome;
 	private String endereco;
 	private String tel;
+	private String email;
 	
 	public Cliente() {
 		
 		
 	}
 	
-	public Cliente(int id, String nome, String endereco, String tel) {
+	public Cliente(int id, String nome, String endereco, String tel, String email) {
 			this.id = id;
 			this.nome = nome;
 			this.endereco = endereco;
 			this.tel = tel;
-	}
+			this.email = email;}
+	
 
 	public int getId() {
 		return id;
@@ -45,6 +47,14 @@ public class Cliente {
 
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
