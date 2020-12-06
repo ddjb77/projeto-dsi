@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form action="#" th:action="@{'/upd/' + ${id}}" method=post>
+    	Nome: <input type="text" th:field="${antigo.nome}">
+    	Telefone: <input type="text" th:field="${antigo.tel}">
+    	Endereço: <input type="text" th:field="${antigo.endereco}">
+    	Email: <input type="text" th:field="${antigo.email}">
+    	<input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>
