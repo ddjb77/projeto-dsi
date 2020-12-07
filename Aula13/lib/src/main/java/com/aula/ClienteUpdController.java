@@ -19,20 +19,20 @@ public class ClienteUpdController {
 	@Autowired
 	private ApplicationContext context;
 	
-	@GetMapping("/upd/{id}")
+	@GetMapping("/update/{id}")
     public String updateForm(@PathVariable("id") int id, Model model){
 		ClienteService cli = context.getBean(ClienteService.class);
-		Map<String,Object> antigo = cli.getCliente(id);
-		Cliente cliente = new Cliente((int)antigo.get("id"),(String)antigo.get("nome"),(String)antigo.get("endereco"),(String)antigo.get("tel"),(String)antigo.get("email"));
-		model.addAttribute("antigo",cliente);
+		Map<String,Object> older = cli.getCliente(id);
+		Cliente c = new Cliente((int)older.get("id"),(String)older.get("nome"),(String)older.get("endereco"),(String)older.get("tel"),(String)older.get("email"));
+		model.addAttribute("older",c);
 		model.addAttribute("id",id);
 		return "formclienteupd";
     }
 	
-	@PostMapping("/upd/{id}")
-	public String update(@PathVariable("id") int id,@ModelAttribute Cliente cliente, Model model) {
+	@PostMapping("/update/{id}")
+	public String update(@PathVariable("id") int id,@ModelAttribute Cliente c, Model model) {
 		ClienteService cli = context.getBean(ClienteService.class);
-		cli.updateCliente(id, cliente);
-		return "redirect:/Clientes";
+		cli.updateCliente(id, c);
+		return "redirect:/clientes";
 	}
 }

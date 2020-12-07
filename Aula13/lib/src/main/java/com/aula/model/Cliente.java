@@ -33,7 +33,15 @@ public class Cliente {
 	public String getEndereco() {
 		return endereco;
 	}
-
+	
+	public String getTel() {
+		return tel;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -42,22 +50,17 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
-	public String getTel() {
-		return tel;
-	}
+	
 
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	
-	public String getEmail() {
-		return email;
-	}
+	
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	
 	
 }

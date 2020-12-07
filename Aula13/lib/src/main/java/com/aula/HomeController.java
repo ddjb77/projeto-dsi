@@ -12,7 +12,7 @@ public class HomeController {
 	@Autowired
 	private ApplicationContext context;
 	
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String principal(Model model) {
 		String nome = "Teste";
 		model.addAttribute("nome",nome);

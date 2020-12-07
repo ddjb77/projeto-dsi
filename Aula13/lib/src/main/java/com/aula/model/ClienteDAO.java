@@ -22,11 +22,11 @@ public class ClienteDAO{
         jdbc = new JdbcTemplate(dataSource);
     }
     
-    public void insert(Cliente cliente) {
+    public void insert(Cliente c) {
         String sql = "INSERT INTO cliente " +
-    "(nome,tel,endereco,email) VALUES (?,?,?,?)" ;
+    "(nome,endereco,tel,email) VALUES (?,?,?,?)" ;
         jdbc.update(sql, new Object[]{
-        		cliente.getNome(), cliente.getTel(), cliente.getEndereco(), cliente.getEmail()
+        		c.getNome(), c.getTel(), c.getEndereco(), c.getEmail()
         });
     }
     
@@ -46,10 +46,10 @@ public class ClienteDAO{
         jdbc.update(sql, new Object[] {id});
     }
     
-    public void updateCliente(int id, Cliente cliente) {
-    	String sql = "UPDATE cliente SET nome = ?, tel = ?, endereco = ? email = ? WHERE id = ?";
+    public void updateCliente(int id, Cliente c) {
+    	String sql = "UPDATE cliente SET nome = ?, endereco = ?, tel = ?,  email = ? WHERE id = ?";
     	 jdbc.update(sql, new Object[]{
-         		cliente.getNome(), cliente.getTel(), cliente.getEndereco(), cliente.getEmail(),id
+         		c.getNome(), c.getEndereco(), c.getTel() , c.getEmail(), id
          });
     }
 }

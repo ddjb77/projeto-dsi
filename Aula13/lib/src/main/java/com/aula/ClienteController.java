@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.aula.model.Cliente;
 import com.aula.model.ClienteService;
 
-
 @Controller
 public class ClienteController {
 	
@@ -24,31 +23,28 @@ public class ClienteController {
 	
 	@GetMapping("/cliente")
 	public String cadastrar(Model model) {
-		model.addAttribute("cliente",new Cliente());
+		model.addAttribute("c",new Cliente());
 		return "formcliente";
 	}
 	
 	@PostMapping("/cliente")
-	public String acao(@ModelAttribute Cliente cliente,Model model) {
-		model.addAttribute("cliente",cliente);
+	public String acao(@ModelAttribute Cliente c,Model model) {
+		model.addAttribute("c",c);
 		ClienteService cli = context.getBean(ClienteService.class);
-		cli.insert(cliente);
+		cli.insert(c);
 		return "clientesucesso";
 	}
 	
-	@GetMapping("descr/{id}")
+	@GetMapping("infos/{id}")
     public String read(@PathVariable("id") int id, Model model){
 		ClienteService cli = context.getBean(ClienteService.class);
 		Map<String,Object> cliente = cli.getCliente(id);
-		Cliente c = new Cliente((int)cliente.get("id"),(String)cliente.get("nome"),(String)cliente.get("endereco"), (String)cliente.get("tel"), (String)cliente.get("email"));
-		model.addAttribute("cliente",c);
+		Cliente c = new Cliente((int)cliente.get("id"),(String)cliente.get("nome"),(String)cliente.get("endereco"),(String)cliente.get("tel"),(String)cliente.get("email"));
+		model.addAttribute("c",c);
 		return "clientesucesso";
     }
-	
-	
 
-	
-	@GetMapping("/cliente")
+	@GetMapping("/clientes")
 	public String listar(Model model) {
 		ClienteService cli = context.getBean(ClienteService.class);
 		List<Map<String,Object>> clientes = cli.getClientes();
@@ -56,12 +52,11 @@ public class ClienteController {
 		return "formlistacli";
 	}
 	
-	@PostMapping("/apagar/{id}")
+	@PostMapping("/delete/{id}")
 	public String deletar(@PathVariable("id") int id,Model model) {
 		ClienteService cli = context.getBean(ClienteService.class);
 		cli.deleteCliente(id);
 		return "redirect:/clientes";
 	}
-	
 
 }

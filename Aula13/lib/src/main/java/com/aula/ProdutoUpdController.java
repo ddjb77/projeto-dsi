@@ -23,7 +23,7 @@ public class ProdutoUpdController {
     public String updateForm(@PathVariable("id") int id, Model model){
 		ProdutoService pdao = context.getBean(ProdutoService.class);
 		Map<String,Object> antigo = pdao.getProduto(id);
-		Produto prod = new Produto((String)antigo.get("nome"),(double)antigo.get("preco"));
+		Produto prod = new Produto((String)antigo.get("nome"),(float)antigo.get("preco"));
 		model.addAttribute("antigo",prod);
 		model.addAttribute("id",id);
 		return "formprodupd";

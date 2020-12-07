@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteService {
+	
 	  @Autowired 
 	  ClienteDAO cli;
 	  
-	  public void insert(Cliente cliente) {
-	    cli.insert(cliente);
+	  public void insert(Cliente c) {
+	    cli.insert(c);
 	  }
 	  
 	  public Map<String, Object> getCliente(int id) {
@@ -27,7 +28,7 @@ public class ClienteService {
 		  cli.deleteCliente(id);
 	  }
 	  
-	  public void updateCliente(int id, Cliente cliente) {
-		  cli.updateCliente(id, cliente);
+	  public void updateCliente(int id, Cliente c) {
+		  cli.updateCliente(id, c);
 	  }
 }
